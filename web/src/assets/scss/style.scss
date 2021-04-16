@@ -1,0 +1,182 @@
+// 执行
+
+@import './variables';
+
+* {
+    box-sizing: border-box;
+    outline: none;
+}
+
+html {
+    font-size: 14px;
+}
+
+body {
+    margin: 0px;
+    font-family: tahoma, 微软雅黑, sans-serif;
+    line-height: 18px;
+    background-color: rgb(238, 238, 238);
+}
+
+// 链接样式
+a {
+    color: #999;
+}
+// p标签的样式
+p{
+    line-height: 1.5em;
+}
+
+// 定义颜色
+
+@each $colorKey, $color in $colors {
+    .text-#{$colorKey} {
+        color: $color;
+    };
+    .bg-#{$colorKey} {
+        background-color:$color;
+    }
+}
+
+// 字体对齐
+@each $var in (left, center, right) {
+    .text-#{$var} {
+        // !important用于强制应用
+        text-align: $var !important;
+    };   
+}
+
+@each $sizeKey, $size in $font-sizes {
+    .fs-#{$sizeKey} {
+        font-size: $size * $base-font-size;
+    }
+}
+
+// text overflow（处理溢出）
+.text-ellipsis {
+    display: inline-block;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+// width, height
+.w-100 {
+    width: 100%;
+}
+
+.h-100 {
+    height: 100%;
+}
+
+// flex布局
+.d-flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.flex-wrap {
+    flex-wrap: wrap;
+}
+
+@each $key, $value in $flex-jc {
+    .jc-#{$key} {
+        justify-content: $value;
+    }
+}
+
+@each $key, $value in $flex-ai {
+    .ai-#{$key} {
+    align-items: $value;
+    }
+}
+
+.flex-1 {
+    flex: 1;
+}
+
+.flex-grow-1 {
+    flex-grow: 1;
+}
+
+@each $typeKey, $type in $spacing-types {
+    // m-1
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}-#{$sizeKey} {
+            #{$type}: $size * $spacing-base-size;
+        }
+    }
+
+    // .mx-1,.my-1
+    @each $sizeKey, $size in $spacing-sizes {
+        .#{$typeKey}x-#{$sizeKey} {
+            #{$type}-left: $size * $spacing-base-size;
+            #{$type}-right: $size * $spacing-base-size;
+        }
+        .#{$typeKey}y-#{$sizeKey} {
+            #{$type}-top: $size * $spacing-base-size;
+            #{$type}-bottom: $size * $spacing-base-size;
+        }
+    }
+
+    // .mt-1
+    @each $directionKey, $direction in $spacing-directions {
+        @each $sizeKey, $size in $spacing-sizes {
+            // .mt-1 {margin-top:0.25rem; }
+            .#{$typeKey}#{$directionKey}-#{$sizeKey} {
+                #{$type}-#{$direction}: $size * $spacing-base-size;
+            }
+        }
+    }
+}
+
+// nav
+.nav {
+    display: flex;
+    .nav-item{
+        border-bottom: 3px solid transparent;
+        padding-bottom: 0.2rem;
+        &.active{
+            color: map-get($map: $colors, $key:'primary' );
+            border-bottom-color: map-get($map: $colors, $key:'primary' );
+        }
+    }
+    &.nav-inverse {
+        .nav-item{
+            color: map-get($map: $colors, $key: "white");
+            &.active{
+                border-bottom-color: map-get($map: $colors, $key: "white" );
+            }
+        }
+    }
+
+}
+
+// 边框
+@each $dir in (top,right,bottom,left) {
+    .border-#{$dir} {
+        border-#{$dir}: 1px solid map-get($map: $colors, $key:'grey' )
+    }
+}
+
+// sprite
+.sprite {
+  background: url('../images/index.png') no-repeat 0 0;
+  background-size: 26.7857rem;
+//   为了强制设计宽高
+//   利用网站sprintcow
+  display: inline-block;
+  &.sprite-news {
+      width: 1.8571rem;
+      height: 1.5rem;
+      background-position: -34px -5px;
+  }
+  &.sprite-arrow {
+    width: 0.7143rem;
+    height: 0.7143rem;
+    background-position: -141px -232px;
+}
+}

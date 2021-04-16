@@ -1,0 +1,68 @@
+// 参数变量
+
+$colors: (
+    "primary": #99CCFF,
+    "bgreen":rgb(126, 161, 166),
+    "white": #fff,
+    "background-color": rgb(238, 238, 238),
+    "black": #000,
+    "dark": #424242,
+    "grey": #AEAEAE,
+    "gblue": #59a0e7,
+    "info": #4b67af,
+    "light-1": #d4d9de,
+);
+
+$border-color: map-get($map: $colors, $key:'light-1' );
+
+// 字体尺寸
+$base-font-size: 1rem;
+$font-sizes: (
+    // 12px
+    xs:0.8571, 
+    // 14px
+    s:1,
+    // 16px
+    m:1.1429,
+    // 18px
+    l:1.2857,
+    // 20px
+    xl:1.4286,
+    );
+
+    $flex-jc: (
+        start:flex-start,
+        end: flex-end,
+        center: center,
+        between: space-between,
+        around: space-around,
+    );
+
+    $flex-ai: (
+        start:flex-start,
+        end: flex-end,
+        center: center,
+        stretch: stretch, 
+    );
+
+    // 间距
+$spacing-types: (
+    m: margin, 
+    p: padding
+);
+$spacing-directions: (
+    t: top, 
+    r:right, 
+    b:bottom, 
+    l:left
+);
+$spacing-base-size: 1rem;
+$spacing-sizes: (
+    0:0,
+    1:0.25,
+    2:0.5, 
+    3:1, 
+    4:1.5, 
+    5:3.5,
+    6:9
+);
